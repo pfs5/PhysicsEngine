@@ -6,14 +6,26 @@
 #define PHYSICSENGINE_RIGIDBODY_H
 
 #include "Component.h"
+#include "../Vectors/Vector2f.h"
+#include "../Physics/Material.h"
 
 namespace GameObjects {
     class Rigidbody : public Component {
     public:
         Rigidbody(GameObject *game_object);
 
-        std::type_index getType() override;
+        LinAlg::Vector2f velocity;
+        LinAlg::Vector2f acceleration;
 
+        void setMaterial(Physics::Material *material);
+        std::type_index getType() override;
+        float getMass();
+        void setGravity (bool gravity);
+        bool hasGravity ();
+
+    private:
+        bool m_gravity;
+        Physics::Material *m_material;
     };
 }
 

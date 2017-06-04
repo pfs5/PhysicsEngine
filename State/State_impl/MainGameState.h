@@ -13,7 +13,7 @@ namespace State {
         MainGameState(Application &application);
 
     private:
-        void initShape();
+        void initShape(float x, float y, sf::Color color);
 
     };
 }

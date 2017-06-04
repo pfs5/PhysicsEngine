@@ -10,27 +10,41 @@
 #include <SFML/Graphics/Drawable.hpp>
 #include <unordered_map>
 #include <typeindex>
+#include <SFML/Graphics/Transformable.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
 #include "Component.h"
+#include "../Vectors/Vector2f.h"
+#include "../Physics/Shape.h"
 
 class Component;
 
 namespace GameObjects {
     class GameObject {
     public:
-        sf::Vector2f position;
-        sf::Vector2f rotation;
-        sf::Vector2f scale;
+        LinAlg::Vector2f position;
+        LinAlg::Vector2f rotation;
+        LinAlg::Vector2f scale;
 
+        void update(float dt);
         void draw();
-        void setShape(sf::Drawable *shape);
+        void setShape(Physics::Shape *shape);
+        Physics::Shape *getShape();
 
         template<typename T>
-        T *getComponent();
+        T *getComponent() {
+            std::unordered_map<std::type_index, Component *>::const_iterator item = m_components.find(typeid(T));
+            if (item == m_components.end()) {
+                return nullptr;
+            }
+
+            return (T *) m_components.at(typeid(T));
+        };
+
         void addComponent(Component * component);
 
     private:
         std::unordered_map<std::type_index, Component*> m_components;
-        sf::Drawable *m_shape;
+        Physics::Shape *m_shape;
     };
 }
 

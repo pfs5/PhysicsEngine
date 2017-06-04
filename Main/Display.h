@@ -24,6 +24,8 @@ namespace Display {
     constexpr uint16_t HEIGHT = 720;
     constexpr uint16_t WIDTH = 1208;
     const std::string TITLE = "Window";
+
+    constexpr float UPS = 60;
 }
 
 #endif //PHYSICSENGINE_DISPLAY_H
