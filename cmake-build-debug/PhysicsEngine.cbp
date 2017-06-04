@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="PhysicsEngine"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake_modules\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/patrik/C++/PhysicsEngine/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/patrik/C++/PhysicsEngine/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/patrik/C++/PhysicsEngine/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PhysicsEngine">
+				<Option output="/home/patrik/C++/PhysicsEngine/cmake-build-debug/PhysicsEngine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/patrik/C++/PhysicsEngine/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 PhysicsEngine"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PhysicsEngine/fast">
+				<Option output="/home/patrik/C++/PhysicsEngine/cmake-build-debug/PhysicsEngine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/patrik/C++/PhysicsEngine/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 PhysicsEngine/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/patrik/C++/PhysicsEngine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/GameObjects/Component.cpp">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/GameObjects/Component.h">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/GameObjects/GameObject.cpp">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/GameObjects/GameObject.h">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/GameObjects/Rigidbody.cpp">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/GameObjects/Rigidbody.h">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/Main/Application.cpp">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/Main/Application.h">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/Main/Display.cpp">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/Main/Display.h">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/Main/main.cpp">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/State/GameState.cpp">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/State/GameState.h">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/State/PlayingState.cpp">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/State/PlayingState.h">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/State/State_impl/MainGameState.cpp">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/State/State_impl/MainGameState.h">
+			<Option target="PhysicsEngine"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/patrik/C++/PhysicsEngine/cmake_modules/FindSFML.cmake">
+			<Option virtualFolder="CMake Files\cmake_modules\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
