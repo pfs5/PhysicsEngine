@@ -1,4 +1,5 @@
 # clion
 CMakeLists.txt
-cmake-build-debug/*
-cmake_modules/*
+cmake-build-debug
+cmake_modules
+.idea
