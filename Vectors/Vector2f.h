@@ -27,7 +27,16 @@ namespace LinAlg {
             this->y = (float) y;
         }
 
+        Vector2f (sf::Vector2f v) {
+            x = v.x;
+            y = v.y;
+        }
+
         sf::Vector2f asSfVector2f();
+        void copy (LinAlg::Vector2f v) {
+            x = v.x;
+            y = v.y;
+        }
 
         // Operators
         Vector2f& operator+=(const Vector2f &v) {
@@ -51,6 +60,10 @@ namespace LinAlg {
         friend Vector2f operator*(float k, const Vector2f &v);
         friend Vector2f operator/(const Vector2f &v, float k);
         friend Vector2f operator/(float k, const Vector2f &v);
+
+        // Operations
+        static float dotProduct(Vector2f a, Vector2f b);
+        float squareMagnitude();
     };
 
 }

@@ -11,10 +11,6 @@ namespace State {
     class MainGameState : public PlayingState{
     public:
         MainGameState(Application &application);
-
-    private:
-        void initShape(float x, float y, sf::Color color);
-
     };
 }
 

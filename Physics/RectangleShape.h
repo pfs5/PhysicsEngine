@@ -18,9 +18,14 @@ namespace Physics {
         sf::Transformable *getTransformable() override;
 
         float getVolume() override;
+        virtual Collisions::AABB *getAABB() override ;
+
+        Collisions::Collider *getCollider() override;
+
 
     private:
         sf::RectangleShape *m_rectangle;
+        Collisions::Collider *m_collider;
     };
 }
 

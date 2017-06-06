@@ -18,14 +18,22 @@ namespace GameObjects {
         LinAlg::Vector2f acceleration;
 
         void setMaterial(Physics::Material *material);
+        Physics::Material *getMaterial();
+
         std::type_index getType() override;
         float getMass();
+        float getInverseMass();
         void setGravity (bool gravity);
         bool hasGravity ();
 
     private:
+        void calculateMass();
+
         bool m_gravity;
         Physics::Material *m_material;
+
+        float m_mass;
+        float m_inv_mass;
     };
 }
 

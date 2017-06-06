@@ -14,14 +14,13 @@ namespace Physics {
         BouncyBall,
         SuperBall,
         Pillow,
-        Static
+        Static,
+        Custom
     };
 
     class Material {
     public:
-        Material () {
-            Material(MaterialType::Default);
-        };
+        Material () : Material(MaterialType::Custom){};
 
         Material (MaterialType type);
 

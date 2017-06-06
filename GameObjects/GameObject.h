@@ -15,15 +15,20 @@
 #include "Component.h"
 #include "../Vectors/Vector2f.h"
 #include "../Physics/Shape.h"
+#include "../Collisions/Collider.h"
 
 class Component;
 
 namespace GameObjects {
     class GameObject {
     public:
+        std::string name;
+
         LinAlg::Vector2f position;
         LinAlg::Vector2f rotation;
         LinAlg::Vector2f scale;
+
+        bool drawAABB;
 
         void update(float dt);
         void draw();
@@ -41,6 +46,9 @@ namespace GameObjects {
         };
 
         void addComponent(Component * component);
+
+        Collisions::AABB *getAABB();
+        Collisions::Collider *getCollider();
 
     private:
         std::unordered_map<std::type_index, Component*> m_components;

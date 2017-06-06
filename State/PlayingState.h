@@ -18,6 +18,8 @@ namespace State {
 
         void draw() override;
 
+        static GameObjects::GameObject *controlled_object;
+
     };
 }
 

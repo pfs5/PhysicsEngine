@@ -2,17 +2,26 @@
 #include "Application.h"
 #include "../Vectors/Vector2f.h"
 
+Collisions::AABB *f () {
+    LinAlg::Vector2f min(1.f, 2.f);
+    LinAlg::Vector2f max(3.f, 4.f);
+    return new Collisions::AABB(min, max);
+}
+
 int main() {
     std::cout << "Starting game ..." << std::endl;
 
-    LinAlg::Vector2f v1 (1, 2);
-    LinAlg::Vector2f v2 (3, 4);
-    LinAlg::Vector2f v3 = 10 * v1;
-    v3 += v1;
+    sf::RectangleShape r;
+    r.setSize(sf::Vector2f(1.f, 1.f));
+    r.setPosition(sf::Vector2f(5.f, 5.f));
+    r.setRotation(45.f);
+    sf::Transform t = r.getTransform();
 
-    std::cout << v1 << std::endl;
-    std::cout << v2 << std::endl;
-    std::cout << v3 << std::endl;
+
+    for (size_t i=0; i<r.getPointCount(); i++) {
+        sf::Vector2f p = t.transformPoint(r.getPoint(i));
+        std::cout << p.x << " " << p.y << std::endl;
+    }
 
     Application app;
 

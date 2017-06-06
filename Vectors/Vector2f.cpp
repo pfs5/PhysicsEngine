@@ -33,4 +33,17 @@ namespace LinAlg {
         return Vector2f(v.x / k, v.y / k);
     }
 
+    Vector2f operator/(const Vector2f &v, float k) {
+        return Vector2f(v.x / k, v.y / k);
+    }
+
+    float Vector2f::dotProduct(Vector2f a, Vector2f b) {
+        float res = a.x*b.x + a.y*b.y;
+        return res;
+    }
+
+    float Vector2f::squareMagnitude() {
+        return x*x + y*y;
+    }
+
 }
