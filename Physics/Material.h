@@ -20,7 +20,7 @@ namespace Physics {
 
     class Material {
     public:
-        Material () : Material(MaterialType::Custom){};
+        Material () : Material(MaterialType::Default){};
 
         Material (MaterialType type);
 

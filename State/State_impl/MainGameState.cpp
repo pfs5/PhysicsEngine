@@ -12,7 +12,7 @@
 GameObjects::GameObject *initRectangle(std::string name, float x, float y, sf::Vector2f size, sf::Color color, bool useGravity = true, float rotation = 0.f) {
     // Create square
     GameObjects::GameObject *square1 = new GameObjects::GameObject;
-    square1->position = LinAlg::Vector2f(x, y);
+    square1->setPosition(LinAlg::Vector2f(x, y));
     square1->drawAABB = true;
     square1->name = name;
 
@@ -27,7 +27,7 @@ GameObjects::GameObject *initRectangle(std::string name, float x, float y, sf::V
     square1->setShape(shape);
 
     GameObjects::Rigidbody *rigidbody = new GameObjects::Rigidbody(square1);
-    rigidbody->velocity = LinAlg::Vector2f(0, 0);
+    rigidbody->setVelocity(LinAlg::Vector2f(0, 0));
     rigidbody->setGravity(useGravity);
     square1->addComponent(rigidbody);
 
@@ -37,7 +37,7 @@ GameObjects::GameObject *initRectangle(std::string name, float x, float y, sf::V
 GameObjects::GameObject *initBall(std::string name, float x, float y, float r, sf::Color color, bool useGravity = true) {
     // Create circle
     GameObjects::GameObject *circle = new GameObjects::GameObject;
-    circle->position = LinAlg::Vector2f(x, y);
+    circle->setPosition(LinAlg::Vector2f(x, y));
     circle->drawAABB = true;
     circle->name = name;
 
@@ -51,11 +51,23 @@ GameObjects::GameObject *initBall(std::string name, float x, float y, float r, s
     circle->setShape(shape);
 
     GameObjects::Rigidbody *rigidbody = new GameObjects::Rigidbody(circle);
-    rigidbody->velocity = LinAlg::Vector2f(0, 0);
+    rigidbody->setVelocity(LinAlg::Vector2f(0, 0));
     rigidbody->setGravity(useGravity);
     circle->addComponent(rigidbody);
 
     return circle;
+}
+
+void intializeCubes(int x, int y, std::vector<GameObjects::GameObject *> &game_objects) {
+    LinAlg::Vector2f origin(100.f, 50.f);
+
+    for (int i=0; i<x; i++) {
+        for (int j=0; j<y; j++) {
+            LinAlg::Vector2f position = origin + LinAlg::Vector2f(i*100.f, j*100.f);
+            GameObjects::GameObject *obj = initRectangle("white", position.x, position.y, sf::Vector2f(25.f, 25.f), sf::Color::White, true, 0.f);
+            game_objects.push_back(obj);
+        }
+    }
 }
 
 State::MainGameState::MainGameState(Application &application) : PlayingState(application) {
@@ -65,30 +77,16 @@ State::MainGameState::MainGameState(Application &application) : PlayingState(app
     std::cout << "Opening state " << m_state_name << std::endl;
 
     // Falling objects
-    GameObjects::GameObject *obj1 = initRectangle("white", 150.f, 50.f,sf::Vector2f(100.f, 100.f), sf::Color::White, false, 30.f);
-    GameObjects::GameObject *obj2 = initRectangle("white", 300.f, 50.f,sf::Vector2f(50.f, 50.f), sf::Color::White, true);
-    GameObjects::GameObject *obj3 = initRectangle("white", 500.f, 50.f,sf::Vector2f(50.f, 50.f), sf::Color::White, true);
-    GameObjects::GameObject *obj4 = initRectangle("white", 700.f, 50.f,sf::Vector2f(50.f, 50.f), sf::Color::White, true);
-    GameObjects::GameObject *obj5 = initRectangle("white", 300.f, 150.f,sf::Vector2f(50.f, 50.f), sf::Color::White, true);
-    GameObjects::GameObject *obj6 = initRectangle("white", 500.f, 150.f,sf::Vector2f(50.f, 50.f), sf::Color::White, true);
-    GameObjects::GameObject *obj7 = initRectangle("white", 700.f, 150.f,sf::Vector2f(50.f, 50.f), sf::Color::White, true);
+    intializeCubes(3, 3, m_game_objects);
 
-
-    m_game_objects.push_back(obj1);
-    m_game_objects.push_back(obj2);
-    m_game_objects.push_back(obj3);
-    m_game_objects.push_back(obj4);
-    //m_game_objects.push_back(obj5);
-    //m_game_objects.push_back(obj6);
-    //m_game_objects.push_back(obj7);
-
-    State::PlayingState::controlled_object = obj2;
+    //State::PlayingState::controlled_object = obj2;
 
     //m_game_objects.push_back(initBall("ball", 500.f, 150.f, 30.f, sf::Color::Yellow));
 
     // Plane
     GameObjects::GameObject *plane = initRectangle("plane", 50.f, 500.f, sf::Vector2f(800.f, 50.f), sf::Color::Cyan, false);
     plane->getComponent<GameObjects::Rigidbody>()->setMaterial(new Physics::Material(Physics::MaterialType::Static));
+    plane->getComponent<GameObjects::Rigidbody>()->setStatic(true);
     m_game_objects.push_back(plane);
 }
 

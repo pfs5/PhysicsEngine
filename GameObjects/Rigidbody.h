@@ -14,22 +14,32 @@ namespace GameObjects {
     public:
         Rigidbody(GameObject *game_object);
 
-        LinAlg::Vector2f velocity;
-        LinAlg::Vector2f acceleration;
-
         void setMaterial(Physics::Material *material);
-        Physics::Material *getMaterial();
 
+        Physics::Material *getMaterial();
         std::type_index getType() override;
+
+        void setVelocity(LinAlg::Vector2f v);
+        LinAlg::Vector2f getVelocity();
+        void setAcceleration(LinAlg::Vector2f a);
+        LinAlg::Vector2f getAcceleration();
+
         float getMass();
         float getInverseMass();
         void setGravity (bool gravity);
         bool hasGravity ();
+        void setStatic (bool stat);
 
+        bool isStatic();
     private:
+        LinAlg::Vector2f m_velocity;
+        LinAlg::Vector2f m_acceleration;
+
         void calculateMass();
 
         bool m_gravity;
+        bool m_static;
+
         Physics::Material *m_material;
 
         float m_mass;

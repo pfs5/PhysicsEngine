@@ -19,16 +19,16 @@ void State::PlayingState::input() {
 
     float speed = 0.1f;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        PlayingState::controlled_object->position -= LinAlg::Vector2f(speed, 0.f);
+        PlayingState::controlled_object->translate(LinAlg::Vector2f(speed, 0.f));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        PlayingState::controlled_object->position += LinAlg::Vector2f(speed, 0.f);
+        PlayingState::controlled_object->translate(LinAlg::Vector2f(speed, 0.f));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        PlayingState::controlled_object->position -= LinAlg::Vector2f(0.f, speed);
+        PlayingState::controlled_object->translate(LinAlg::Vector2f(0.f, speed));
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        PlayingState::controlled_object->position += LinAlg::Vector2f(0.f, speed);
+        PlayingState::controlled_object->translate(LinAlg::Vector2f(0.f, speed));
     }
 }
 
@@ -51,7 +51,7 @@ bool narrowStage (GameObjects::GameObject *a, GameObjects::GameObject *b, LinAlg
     colliders.push_back(a->getCollider());
     colliders.push_back(b->getCollider());
 
-    distance = -5 *Physics::COLLISION_DISTANCE_MIN;
+    distance = std::numeric_limits<int>::min();
 
     for (int c=0; c<2; c++) {
         for (int i = 0; i < colliders[c]->points.size() - 1; i++) {
@@ -89,8 +89,13 @@ void resolveCollision(GameObjects::GameObject *a, GameObjects::GameObject *b, Li
     }
 
     // Relative velocity
-    LinAlg::Vector2f relVelocity = rb_b->velocity - rb_a->velocity;
+    LinAlg::Vector2f relVelocity = rb_b->getVelocity() - rb_a->getVelocity();
     float velAlongNormal = LinAlg::Vector2f::dotProduct(relVelocity, normal);
+
+    // Dont resolve if velocities are separating
+    if (velAlongNormal > 0) {
+        return;
+    }
 
     // Restitution
     float e = fminf(rb_a->getMaterial()->restitution, rb_b->getMaterial()->restitution);
@@ -102,15 +107,16 @@ void resolveCollision(GameObjects::GameObject *a, GameObjects::GameObject *b, Li
 
     // Apply impulse
     LinAlg::Vector2f impulse = j * normal;
-    std::cout << impulse << std::endl;
 
     // Move out of collision
-    a->position -= normal * distance * 5;           // TODO
-    b->position += normal * distance * 5;           // TODO
+    LinAlg::Vector2f push = normal * distance;
+    std::cout << distance << std::endl;
+    a->translate(-1 * normal * distance * 10);           // TODO
+    b->translate(normal * distance * 10);           // TODO
 
     // Modify speed
-    rb_a->velocity -= 1.f / rb_a->getMass() * impulse;
-    rb_b->velocity += 1.f / rb_b->getMass() * impulse;
+    rb_a->setVelocity(rb_a->getVelocity() - 1.f / rb_a->getMass() * impulse);
+    rb_b->setVelocity(rb_b->getVelocity() + 1.f / rb_b->getMass() * impulse);
 }
 
 void collisionDetection(std::vector<GameObjects::GameObject *> game_objects) {
@@ -125,7 +131,7 @@ void collisionDetection(std::vector<GameObjects::GameObject *> game_objects) {
                 if (isCollision) {
                     std::cout << "collision" << std::endl;
                     normal = normal / sqrtf(normal.squareMagnitude());      // Normalize
-                    resolveCollision(game_objects[i], game_objects[j], normal, distance);
+                    resolveCollision(game_objects[i], game_objects[j], normal.getDirection(), fabsf(distance));
                 }
             }
         }

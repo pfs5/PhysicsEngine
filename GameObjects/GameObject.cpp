@@ -14,14 +14,13 @@ void GameObjects::GameObject::update(float dt) {
     Rigidbody *rb = getComponent<Rigidbody>();
     if (rb) {
         // Basic movement
-        LinAlg::Vector2f a = rb->acceleration;
+        LinAlg::Vector2f a = rb->getAcceleration();
         if (rb->hasGravity()) {
             a += LinAlg::Vector2f(0.f, Physics::GRAVITY);
         }
-        rb->velocity += a * dt;
+        rb->setVelocity(rb->getVelocity() + a * dt);
 
-        position += rb->velocity * dt;
-        m_shape->getTransformable()->setPosition(position.x, position.y);
+        translate(rb->getVelocity() * dt);
     }
 }
 
@@ -42,6 +41,7 @@ void GameObjects::GameObject::draw() {
 
 void GameObjects::GameObject::setShape(Physics::Shape *shape) {
     m_shape = shape;
+    m_shape->getTransformable()->setPosition(m_position.x, m_position.y);
 }
 
 Physics::Shape *GameObjects::GameObject::getShape() {
@@ -58,4 +58,25 @@ Collisions::AABB *GameObjects::GameObject::getAABB() {
 
 Collisions::Collider *GameObjects::GameObject::getCollider() {
     return m_shape->getCollider();
+}
+
+LinAlg::Vector2f GameObjects::GameObject::getPosition() {
+    return m_position;
+}
+
+void GameObjects::GameObject::setPosition(LinAlg::Vector2f position) {
+    m_position = position;
+    if (m_shape != nullptr) {
+        m_shape->getTransformable()->setPosition(position.x, position.y);
+    }
+}
+
+void GameObjects::GameObject::translate(LinAlg::Vector2f amount) {
+    GameObjects::Rigidbody *rb = getComponent<GameObjects::Rigidbody>();
+    if (rb != nullptr) {
+        if (rb->isStatic()) {
+            return;
+        }
+    }
+    setPosition(getPosition() + amount);
 }

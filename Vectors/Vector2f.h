@@ -33,6 +33,10 @@ namespace LinAlg {
         }
 
         sf::Vector2f asSfVector2f();
+
+        // Returns direction of the vector in [0, 180] angle space
+        LinAlg::Vector2f getDirection();
+
         void copy (LinAlg::Vector2f v) {
             x = v.x;
             y = v.y;

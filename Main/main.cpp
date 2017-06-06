@@ -17,12 +17,8 @@ int main() {
     r.setRotation(45.f);
     sf::Transform t = r.getTransform();
 
-
-    for (size_t i=0; i<r.getPointCount(); i++) {
-        sf::Vector2f p = t.transformPoint(r.getPoint(i));
-        std::cout << p.x << " " << p.y << std::endl;
-    }
-
+    int infinity = std::numeric_limits<int>::min();
+    std::cout << infinity << std::endl;
     Application app;
 
     app.runMainLoop();

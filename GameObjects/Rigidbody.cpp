@@ -21,6 +21,26 @@ void GameObjects::Rigidbody::setMaterial(Physics::Material *material) {
     calculateMass();
 }
 
+void GameObjects::Rigidbody::setVelocity(LinAlg::Vector2f v) {
+    if (!m_static) {
+        m_velocity = v;
+    }
+}
+
+LinAlg::Vector2f GameObjects::Rigidbody::getVelocity() {
+    return m_velocity;
+}
+
+void GameObjects::Rigidbody::setAcceleration(LinAlg::Vector2f a) {
+    if (!m_static) {
+        m_acceleration = a;
+    }
+}
+
+LinAlg::Vector2f GameObjects::Rigidbody::getAcceleration() {
+    return m_acceleration;
+}
+
 void GameObjects::Rigidbody::setGravity(bool gravity) {
     m_gravity = gravity;
 }
@@ -44,4 +64,12 @@ void GameObjects::Rigidbody::calculateMass() {
 
 Physics::Material *GameObjects::Rigidbody::getMaterial() {
     return m_material;
+}
+
+void GameObjects::Rigidbody::setStatic(bool stat) {
+    m_static = stat;
+}
+
+bool GameObjects::Rigidbody::isStatic() {
+    return m_static;
 }

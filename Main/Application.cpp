@@ -43,6 +43,8 @@ void Application::runMainLoop() {
     sf::Time dt = sf::seconds(1.f / Display::UPS);
     sf::Time max_acc = sf::seconds(0.2f);
 
+    std::cout << dt.asSeconds() << std::endl;
+
     while(Display::isOpen()) {
         Display::checkWindowEvents();
         Display::clear();
@@ -51,9 +53,11 @@ void Application::runMainLoop() {
 
         // Physics
         accumulator += clock.restart();
-        if (accumulator > max_acc) {
-            accumulator = max_acc;
-        }
+
+        // Clamp accumulator
+        //if (accumulator > max_acc) {
+        //    accumulator = max_acc;
+        //}
 
         while (accumulator > dt) {
             m_states.top()->update(dt.asSeconds());

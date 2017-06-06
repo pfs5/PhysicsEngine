@@ -46,4 +46,18 @@ namespace LinAlg {
         return x*x + y*y;
     }
 
+    LinAlg::Vector2f Vector2f::getDirection() {
+        float dir_x = x;
+        float dir_y = y;
+
+        if (y < 0) {
+            dir_x *= -1;
+            dir_y *= -1;
+        } else if (y == 0) {
+            dir_x = fabsf(dir_x);
+        }
+
+        return Vector2f(dir_x, dir_y);
+    }
+
 }

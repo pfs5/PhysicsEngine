@@ -22,11 +22,13 @@ class Component;
 namespace GameObjects {
     class GameObject {
     public:
+        GameObject() {
+            m_shape = nullptr;
+        };
         std::string name;
 
-        LinAlg::Vector2f position;
-        LinAlg::Vector2f rotation;
-        LinAlg::Vector2f scale;
+        //LinAlg::Vector2f rotation;
+        //LinAlg::Vector2f scale;
 
         bool drawAABB;
 
@@ -50,7 +52,12 @@ namespace GameObjects {
         Collisions::AABB *getAABB();
         Collisions::Collider *getCollider();
 
+        LinAlg::Vector2f getPosition();
+        void setPosition(LinAlg::Vector2f position);
+        void translate(LinAlg::Vector2f amount);
+
     private:
+        LinAlg::Vector2f m_position;
         std::unordered_map<std::type_index, Component*> m_components;
         Physics::Shape *m_shape;
     };
